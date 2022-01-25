@@ -11,7 +11,13 @@ $ docker build -t kube-study:latest .
 $ docker run --network kube-network --name server-1 -p 20000:20000 -d kube-study
 $ docker run --network kube-network --name server-2 -p 20000:20000 -d kube-study
 
-# 네트워크 통신의 경우, server-1 컨테이너에 들어가서 아래 명령어를 입력해보면 된다.
-$ ping server-2
+# 네트워크 통신 잘 작동하는지 확인
+$ docker exec -it server-1 /bin/bash
+$ ping server-2 -c 5
 
+# 실행 중인 도커 컨테이너 목록 확인
+$ docker container ls
+
+# 실행 중인 도커 컨테이너에 접속
+$ docker exec -it server-1 /bin/bash
 ```
