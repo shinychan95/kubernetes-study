@@ -9,7 +9,7 @@ $ docker build -t kube-study:latest .
 
 # 컨테이너 실행
 $ docker run --network kube-network --name server-1 -p 20000:20000 -d kube-study
-$ docker run --network kube-network --name server-2 -p 20000:20000 -d kube-study
+$ docker run --network kube-network --name server-2 -p 20001:20001 -d kube-study
 
 # 네트워크 통신 잘 작동하는지 확인
 $ docker exec -it server-1 /bin/bash
