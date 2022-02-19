@@ -135,11 +135,13 @@ spec:
     spec:
       containers:
       - args:
+        # Manually Add for lab env(Sysnet4admin/k8s)
+        # skip tls internal usage purpose
+        - --kubelet-insecure-tls
+        # kubelet could use internalIP communication 
+        - --kubelet-preferred-address-types=InternalIP
         - --cert-dir=/tmp
         - --secure-port=4443
-        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
-        - --kubelet-use-node-status-port
-        - --metric-resolution=15s
         image: k8s.gcr.io/metrics-server/metrics-server:v0.6.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
